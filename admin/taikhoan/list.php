@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="row formtitle">
         <h1>DANH SÁCH Sản phẩm</h1>
@@ -7,21 +8,14 @@
 
         </div>
         <div class="row mb10 formds">
-            <form action="index.php?act=listsp" method="post">
+            <form action="index.php?act=listkh" method="post">
                 <input type="text" name="keyword">
-                <select name="iddm" id="">
-                    <option value="0">Tất cả</option>
-                    <?php
-                    $loai = loadall_danhmuc();
-
-                    foreach ($loai as $item) {
-                        ?>
-                        <option value="<?php echo $item['ma_loai'] ?>"><?php echo $item['ma_loai'] ?>.<?php echo $item['ten_loai'] ?></option>
-                        <?php
-                    }
-                    ?>
-                </select><br>
+                <select name="vaitrokh" id="">
+                    <option value="">Tất cả</option>
+                   <option value="1">Admin</option>
+                   <option value="0">Khách hàng</option>
                 </select>
+                <br>
                 <input type="submit" name="filter" value="Search">
             </form>
             <table>
@@ -34,11 +28,12 @@
                     <th>Ảnh tài khoản</th>
                     <th>Vai trò</th>
                 </tr>
+                <form action="index.php?act=delAllTk" method="post">
                 <?php
                 foreach ($taikhoan as $item) {
                     ?>
                     <tr>
-                        <td><input type="checkbox" name=""></td>
+                        <td><input type="checkbox" name="delItem[]" value="<?php echo $item['ma_kh'] ?>"></td>
                         <td>
                             <?php echo $item['ma_kh'] ?>
                         </td>
@@ -66,8 +61,8 @@
                                 <?php
                             } ?>
                         </td>
-                        <td><a href="index.php?act=suasp&id=<?php echo $item['ma_kh'] ?>"><input type="button" name=""
-                                    value="SỬA"></a><a href="index.php?act=xoasp&id=<?php echo $item['ma_kh'] ?>"><input
+                        <td><a href="index.php?act=suakh&id=<?php echo $item['ma_kh'] ?>"><input type="button" name=""
+                                    value="SỬA"></a><a href="index.php?act=xoakh&id=<?php echo $item['ma_kh'] ?>"><input
                                     type="button" name="" value="XÓA"></a></td>
                     </tr>
                     <?php
@@ -77,11 +72,12 @@
             </table>
         </div>
         <div class="row mb10">
-            <input type="submit" value="CHỌN TẤT CẢ">
-            <input type="reset" value="BỎ CHỌN TẤT CẢ">
-            <input type="reset" value="XÓA CÁC MỤC ĐÃ CHỌN">
-            <a href="index.php?act=addsp"><input type="button" value="NHẬP THÊM"></a>
+            <input type="button" value="CHỌN TẤT CẢ" id="selectAll">
+            <input type="button" value="BỎ CHỌN TẤT CẢ" id="unselectAll">
+            <input type="submit" value="XÓA CÁC MỤC ĐÃ CHỌN" name="delAll" id="delAll">
+            <a href="index.php?act=addtk"><input type="button" value="NHẬP THÊM"></a>
         </div>
+        </form>
     </div>
 
 </div>

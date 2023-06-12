@@ -14,11 +14,12 @@
                     <th>TÊN LOẠI</th>
                     <th></th>
                 </tr>
+                <form action="index.php?act=delAllDm" method="post">
                 <?php
                 foreach ($danhmuc as $item) {
                     ?>
                     <tr>
-                        <td><input type="checkbox" name=""></td>
+                        <td><input type="checkbox" name="delItem[]" value="<?php echo $item['ma_loai'] ?>"></td>
                         <td>
                             <?php echo $item['ma_loai'] ?>
                         </td>
@@ -33,15 +34,17 @@
                     # code...
                 }
                 ?>
+                
 
             </table>
         </div>
         <div class="row mb10">
-            <input type="submit" value="CHỌN TẤT CẢ">
-            <input type="reset" value="BỎ CHỌN TẤT CẢ">
-            <input type="reset" value="XÓA CÁC MỤC ĐÃ CHỌN">
+            <input type="button" value="CHỌN TẤT CẢ" id="selectAll">
+            <input type="button" value="BỎ CHỌN TẤT CẢ" id="unselectAll">
+            <input type="submit" value="XÓA CÁC MỤC ĐÃ CHỌN" name="delAll" id="delAll">
             <a href="index.php?act=adddm"><input type="button" value="NHẬP THÊM"></a>
         </div>
+        </form>
     </div>
 
 </div>

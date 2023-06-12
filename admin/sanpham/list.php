@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="row formtitle">
         <h1>DANH SÁCH Sản phẩm</h1>
@@ -32,11 +33,12 @@
                     <th>ẢNH SP</th>
                     <th>MÃ Loại</th>
                 </tr>
+                <form action="index.php?act=delAllSp" method="post">
                 <?php
                 foreach ($sanpham as $item) {
                     ?>
                     <tr>
-                        <td><input type="checkbox" name=""></td>
+                        <td><input type="checkbox" name="delItem[]" value="<?php echo $item['ma_hh'] ?>"></td>
                         <td>
                             <?php echo $item['ma_hh'] ?>
                         </td>
@@ -50,8 +52,8 @@
                             <?php echo $item['ma_loai'] ?>
                         </td>
                         <td><a href="index.php?act=suasp&id=<?php echo $item['ma_hh'] ?>"><input type="button" name=""
-                                    value="SỬA"></a><a href="index.php?act=xoasp&id=<?php echo $item['ma_hh'] ?>"><input
-                                    type="button" name="" value="XÓA"></a></td>
+                            value="SỬA"></a><a href="index.php?act=xoasp&id=<?php echo $item['ma_hh'] ?>"><input
+                            type="button" name="" value="XÓA"></a></td>
                     </tr>
                     <?php
                 }
@@ -60,11 +62,12 @@
             </table>
         </div>
         <div class="row mb10">
-            <input type="submit" value="CHỌN TẤT CẢ">
-            <input type="reset" value="BỎ CHỌN TẤT CẢ">
-            <input type="reset" value="XÓA CÁC MỤC ĐÃ CHỌN">
+            <input type="button" value="CHỌN TẤT CẢ" id="selectAll">
+            <input type="button" value="BỎ CHỌN TẤT CẢ" id="unselectAll">
+            <input type="submit" value="XÓA CÁC MỤC ĐÃ CHỌN" name="delAll" id="delAll">
             <a href="index.php?act=addsp"><input type="button" value="NHẬP THÊM"></a>
         </div>
+        </form>
     </div>
 
 </div>

@@ -39,7 +39,7 @@
                 <div class="row mb10">
                     <input type="submit" name="dangnhap" id="" value="Đăng nhập"><br>
                 </div>
-                <li><a href="#">Quên mật khẩu</a></li>
+                <li><a href="index.php?act=quenmk">Quên mật khẩu</a></li>
                 <li><a href="index.php?act=dangky">Đăng ký thành viên</a></li>
                 <?php
             }

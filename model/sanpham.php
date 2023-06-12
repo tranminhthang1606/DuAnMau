@@ -12,7 +12,7 @@ function insert_sanpham($tenhh, $dongia, $giamgia, $hinh, $ngaynhap, $loai, $dac
 }
 function delete_sanpham($id)
 {
-    $sql = "DELETE FROM loai WHERE `hang_hoa`.`ma_hh` = '$id'";
+    $sql = "DELETE FROM `hang_hoa` WHERE `hang_hoa`.`ma_hh` = '$id'";
     pdo_execute($sql);
 }
 
@@ -59,5 +59,11 @@ function loadall_sanpham_cungloai($ma_loai){
     $sp = pdo_query($sql);
     return $sp;
 }
-
+function random_sanpham(){
+    $sql ="SELECT * FROM `hang_hoa` 
+    ORDER BY RAND()
+    LIMIT 3";
+    $sp = pdo_query($sql);
+    return $sp;
+}
 ?>

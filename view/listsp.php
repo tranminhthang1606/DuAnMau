@@ -21,18 +21,22 @@
                 <?php
                 foreach ($sp_cungloai as $item) {
                     ?>
-                    <a href="index.php?act=chitietsp&id=<?php echo $item['ma_hh'] ?>">
-                        <div class="box-sp mr mb">
-                            <img src="upload/<?php echo $item['hinh'] ?>" alt="" class="pt">
-                            <p>
-                                $
-                                <?php echo $item['don_gia'] ?>
-                            </p>
-                            <a href="">
-                                <?php echo $item['ten_hh'] ?>
-                            </a>
-                        </div>
-                    </a>
+
+                    <div class="box-sp mr mb">
+                        <img src="upload/<?php echo $item['hinh'] ?>" alt="" class="pt">
+                        <h2>
+                            <?php echo $item['ten_hh'] ?>
+                        </h2>
+                        <p>
+                            $
+                            <?php echo $item['don_gia'] ?>
+                        </p>
+
+
+                        <a href="index.php?act=chitietsp&id=<?php echo $item['ma_hh'] ?>"><input type="button"
+                                value="Xem ngay"></a>
+                    </div>
+
 
                     <?php
                 }
