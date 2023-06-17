@@ -28,7 +28,7 @@
                         </td>
                         <td><a href="index.php?act=suadm&id=<?php echo $item['ma_loai'] ?>"><input type="button" name=""
                                     value="SỬA"></a><a href="index.php?act=xoadm&id=<?php echo $item['ma_loai'] ?>"><input
-                                    type="button" name="" value="XÓA"></a></td>
+                                    type="button" name="" value="XÓA" onclick="return confirm('Bạn có chắc chắn muốn xóa')"></a></td>
                     </tr>
                     <?php
                     # code...
@@ -41,7 +41,7 @@
         <div class="row mb10">
             <input type="button" value="CHỌN TẤT CẢ" id="selectAll">
             <input type="button" value="BỎ CHỌN TẤT CẢ" id="unselectAll">
-            <input type="submit" value="XÓA CÁC MỤC ĐÃ CHỌN" name="delAll" id="delAll">
+            <input type="submit" value="XÓA CÁC MỤC ĐÃ CHỌN" name="delAll" id="delAll" onclick="return confirm('Bạn có chắc chắn muốn xóa')">
             <a href="index.php?act=adddm"><input type="button" value="NHẬP THÊM"></a>
         </div>
         </form>

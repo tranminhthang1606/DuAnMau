@@ -5,17 +5,7 @@ include "model/danhmuc.php";
 include "model/taikhoan.php";
 include "model/binhluan.php";
 include "view/header.php";
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/PHPMailer/phpmailer/src/Exception.php';
-require 'vendor/PHPMailer/phpmailer/src/PHPMailer.php';
-require 'vendor/PHPMailer/phpmailer/src/SMTP.php';
-
-
-use PHPMailer\PHPMailer\SMTP;
-
-require 'vendor/autoload.php';
 
 $sp_trangchu = loadall_sanpham_home();
 $danhmuc_trangchu = loadall_danhmuc();
@@ -54,28 +44,28 @@ if (isset($_GET['act'])) {
                     $username = $_POST['username'];
                 } else {
                     $username = "";
+                    $thongbaoname = "Bạn nhập sai định dạng username";
                 }
 
                 if (strlen($_POST['password']) >= 6) {
                     $password = $_POST['password'];
                 } else {
                     $password = "";
+                    $thongbaopassword = "Bạn nhập sai định dạng mật khẩu";
                 }
                 if (str_contains($_POST['email'], "@") || strlen($_POST['email']) > 10) {
                     $email = $_POST['email'];
                 } else {
                     $email = "";
+                    $thongbaoemail = "Bạn nhập sai định dạng email";
                 }
                 $vaitro = $_POST['vaitro'];
                 include("view/taikhoan/upload.php");
-                if ($username != "" && $password != "" && $email != "") {
+                if ($username != "" && $password != "" && $email != "" && $checked==true) {
                     insert_taikhoan($username, $password, $email, $file_name, $vaitro, "");
                     $thongbao = "Đăng ký thành công";
                 } else {
-                    $thongbao = "Hãy kiếm tra lại thông tin";
-                    echo $username;
-                    echo $password;
-                    echo $email;
+                    $thongbao = "Đăng ký thất bại";
                 }
             }
             include "view/taikhoan/dangky.php";
@@ -89,12 +79,14 @@ if (isset($_GET['act'])) {
                     $_SESSION['vaitro'] = $get_account['vai_tro'];
                     $_SESSION['email'] = $get_account['email'];
                     $_SESSION['pass'] = $get_account['mat_khau'];
+                    $_SESSION['avatar'] = $get_account['hinh'];
                 } else {
                     $userID = "";
                     $username = "";
                     $pass = "";
                     $vaitro = "";
                     $email = "";
+                    $hinh ="";
                 }
             }
             include "view/home.php";
@@ -121,21 +113,24 @@ if (isset($_GET['act'])) {
                     $username = $_POST['username'];
                 } else {
                     $username = "";
+                    $thongbaoname = "Bạn nhập sai định dạng username";
                 }
 
                 if (strlen($_POST['password']) >= 6) {
                     $password = $_POST['password'];
                 } else {
                     $password = "";
+                    $thongbaopassword = "Bạn nhập sai định dạng mật khẩu";
                 }
                 if (str_contains($_POST['email'], "@") || strlen($_POST['email']) > 10) {
                     $email = $_POST['email'];
                 } else {
                     $email = "";
+                    $thongbaoemail = "Bạn nhập sai định dạng email";
                 }
                 $vaitro = $_POST['vaitro'];
                 include("view/taikhoan/upload.php");
-                if ($username != "" && $password != "" && $email != "") {
+                if ($username != "" && $password != "" && $email != "" && $checked==true) {
                     update_taikhoan($id_kh, $username, $password, $email, $file_name, $kichhoat, $vaitro);
                     $thongbao = "Cập nhập thành công";
                     $taikhoan_edit = loadone_taikhoan($email, $password);
@@ -197,10 +192,27 @@ if (isset($_GET['act'])) {
         case "hdlcomment":
             if (isset($_POST['binhluan']) && $_POST['binhluan']) {
                 $noidung = $_POST['binhluan'];
+                function check_String($string){
+                    $ignoreKey = ["dm","đm","cứt","xấu","lừa đảo","cl"];
+                    $sliced_string = explode(' ', $string);
+                    $sliced_string2 = end($sliced_string);
+                    $sliced_string3 = strtolower($sliced_string2);
+                    if (in_array($sliced_string3,$ignoreKey)){    
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                
                 $idkh = $_POST['idkh'];
                 $idsp = $_POST['idsp'];
                 $ngaydang = date("y/m/d");
-                insert_binhluan($noidung, $idsp, $idkh, $ngaydang);
+                if(check_String(strtolower($noidung))===false){
+                    insert_binhluan($noidung, $idsp, $idkh, $ngaydang);
+                    $thongbaobinhluantieucuc="";
+                }else{
+                    $thongbaobinhluantieucuc = "Bạn đã có bình luận khiếm nhã bị từ chối";
+                }      
             }
             $spct = loadone_sanpham($idsp);
             include "view/chitietsp.php";

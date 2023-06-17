@@ -41,12 +41,12 @@ function loadone_taikhoan_byID($id)
 
 function filter_taikhoan($vaitro, $keyword)
 {
-    $sql = "select * from `khach_hang`";
+    $sql = "select * from `khach_hang` where 1";
     if ($keyword != "") {
         $sql .= " and `email` like '%$keyword%'";
     }
-    if ($vaitro == 0 || $vaitro == 1) {
-        $sql .= " and `vai_tro`='$vaitro'";
+    if ($vaitro != "") {
+        $sql .= " and `vai_tro` = $vaitro";
     }
     $sql .= " order by `ma_kh` desc";
     $kh = pdo_query($sql);

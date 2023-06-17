@@ -8,16 +8,18 @@
                 <h3>Xin chao :
                     <?php echo $_SESSION['username'] ?>
                 </h3>
+                <img src="upload/<?php echo $_SESSION['avatar']?>" alt="" width="30%">
+                <br>
                 Vai trò :
-                    <?php if ($_SESSION['vaitro'] == 0) {
-                        echo "Khách hàng";
-                    } else {
-                        echo "Admin";
-                        ?>
-                        <br>
-                        <a href="../admin/index.php">Quản lý bán hàng</a>
-                        <?php
-                    } ?>
+                <?php if ($_SESSION['vaitro'] == 0) {
+                    echo "Khách hàng";
+                } else {
+                    echo "Admin";
+                    ?>
+                    <br>
+                    <a href="../admin/index.php">Quản lý bán hàng</a>
+                    <?php
+                } ?>
                 <br>
                 <a href="index.php?act=edit_tk">Cập nhập tài khoản</a>
                 <br>
@@ -55,9 +57,11 @@
             <?php
             foreach ($danhmuc_trangchu as $dm) {
                 ?>
-                <li><a href="index.php?act=listsp&id=<?php echo $dm['ma_loai'] ?>">
+                <a href="index.php?act=listsp&id=<?php echo $dm['ma_loai'] ?>">
+                    <li>
                         <?php echo $dm['ten_loai'] ?>
-                    </a></li>
+                    </li>
+                </a>
                 <?php
             }
 
@@ -79,9 +83,12 @@
         foreach ($sp_top10 as $item) {
             ?>
             <div class="row mb10 top10">
-                <img src="upload/<?php echo $item['hinh'] ?>" alt="">
                 <a href="index.php?act=chitietsp&id=<?php echo $item['ma_hh'] ?>">
-                    <?php echo $item['ten_hh'] ?>
+                    <img src="upload/<?php echo $item['hinh'] ?>" alt="">
+                    <span>
+                        <?php echo $item['ten_hh'] ?>
+                    </span>
+
                 </a>
             </div>
             <?php

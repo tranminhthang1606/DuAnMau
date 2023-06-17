@@ -12,11 +12,11 @@ if (isset($_GET['act'])) {
     switch ($act) {
         case "adddm":
             if (isset($_POST['themmoi'])) {
-                if($_POST['tenloai']!=""){
+                if ($_POST['tenloai'] != "") {
                     $tenloai = $_POST['tenloai'];
-                insert_danhmuc($tenloai);
-                $thongbao = "Thêm thành công";
-                }else{
+                    insert_danhmuc($tenloai);
+                    $thongbao = "Thêm thành công";
+                } else {
                     $thongbao = "Bạn nhập sai định dạng";
                 }
             }
@@ -24,9 +24,25 @@ if (isset($_GET['act'])) {
             break;
         case "addsp":
             if (isset($_POST['themsp'])) {
-                $tensp = $_POST['tensp'];
-                $dongia = $_POST['dongia'];
-                $giamgia = $_POST['giamgia'];
+                if($_POST['tensp']!=""){
+                    $tensp = $_POST['tensp'];
+                }else{
+                    $tensp="";
+                    $thongbaoTensp = "Bạn nhập sai định dạng tên";
+                }
+                
+                if($_POST['dongia']!="" &&is_nan($_POST['dongia'])==false){
+                    $dongia = $_POST['dongia'];
+                }else{
+                    $dongia="";
+                    $thongbaoDongia = "Bạn phải nhập số vào giá sản phẩm";
+                }
+                if($_POST['giamgia']!="" &&is_nan($_POST['giamgia'])==false){
+                    $giamgia = $_POST['giamgia'];
+                }else{
+                    $giamgia="";
+                    $thongbaogiamgia = "Bạn phải nhập số vào giá giảm";
+                }
                 $ngaynhap = $_POST['ngaynhap'];
                 $loai = $_POST['loai'];
                 $dacbiet = $_POST['dacbiet'];
@@ -34,10 +50,10 @@ if (isset($_GET['act'])) {
                 $mota = $_POST['mota'];
                 include "sanpham/upload.php";
                 global $file_name;
-                if($tensp!=""&&$ngaynhap!=""&&$loai!=""&&is_nan($dongia)==false&&is_nan($slx)==false){
+                if ($tensp != "" && $ngaynhap != "" && $loai != "" && is_nan($dongia) == false && is_nan($slx) == false && $checked == true) {
                     insert_sanpham($tensp, $dongia, $giamgia, $file_name, $ngaynhap, $loai, $dacbiet, $slx, $mota);
                     $thongbao = "Thêm thành công";
-                }else{
+                } else {
                     $thongbao = "Hãy kiểm tra lại định dạng";
                 }
             }
@@ -62,6 +78,7 @@ if (isset($_GET['act'])) {
         case "xoadm":
             if (isset($_GET['id'])) {
                 $id = $_GET['id'];
+                delete_sanpham_byDanhMuc($id);
                 delete_danhmuc($id);
             }
             $danhmuc = loadall_danhmuc();
@@ -92,10 +109,26 @@ if (isset($_GET['act'])) {
             break;
         case "updatesp";
             if (isset($_POST['capnhapsp']) && $_POST['capnhapsp']) {
-                $id = $_POST['masp'];
-                $tensp = $_POST['tensp'];
-                $dongia = $_POST['dongia'];
-                $giamgia = $_POST['giamgia'];
+                if($_POST['tensp']!=""){
+                    $tensp = $_POST['tensp'];
+                }else{
+                    $tensp="";
+                    $thongbaoTensp = "Bạn nhập sai định dạng tên";
+                }
+                
+                if($_POST['dongia']!="" &&is_nan($_POST['dongia'])==false){
+                    $dongia = $_POST['dongia'];
+                }else{
+                    $dongia="";
+                    $thongbaoDongia = "Bạn phải nhập số vào giá sản phẩm";
+                }
+                
+                if($_POST['giamgia']!="" &&is_nan($_POST['giamgia'])==false){
+                    $giamgia = $_POST['giamgia'];
+                }else{
+                    $giamgia="";
+                    $thongbaogiamgia = "Bạn phải nhập số vào giá giảm";
+                }
                 $ngaynhap = $_POST['ngaynhap'];
                 $loai = $_POST['loai'];
                 $dacbiet = $_POST['dacbiet'];
@@ -103,11 +136,11 @@ if (isset($_GET['act'])) {
                 $mota = $_POST['mota'];
                 include "sanpham/upload.php";
                 global $file_name;
-                if($tensp!=""&&$ngaynhap!=""&&$loai!=""&&is_nan($dongia)==false&&is_nan($slx)==false){
-                update_sanpham($id, $tensp, $dongia, $giamgia, $file_name, $ngaynhap, $loai, $dacbiet, $slx, $mota);
-                $thongbao = "Cập nhập thành công";
-                }else{
-                    $thongbao="Cập nhập thất bại";
+                if ($tensp != "" && $ngaynhap != "" && $loai != "" && is_nan($dongia) == false && is_nan($slx) == false && $checked == true) {
+                    update_sanpham($id, $tensp, $dongia, $giamgia, $file_name, $ngaynhap, $loai, $dacbiet, $slx, $mota);
+                    $thongbao = "Cập nhập thành công";
+                } else {
+                    $thongbao = "Cập nhập thất bại";
                 }
             }
             $sanpham = loadall_sanpham();
@@ -117,10 +150,10 @@ if (isset($_GET['act'])) {
             if (isset($_POST['capnhap']) && $_POST['capnhap']) {
                 $id = $_POST['id'];
                 $tenloai = $_POST['tenloai'];
-                if($tenloai!=""){
+                if ($tenloai != "") {
                     update_danhmuc($id, $tenloai);
                     $thongbao = "Cập nhập thành công";
-                }else{
+                } else {
                     $thongbao = "Cập nhập thất bại";
                 }
             }
@@ -152,36 +185,39 @@ if (isset($_GET['act'])) {
         case "update_tk":
             if (isset($_POST['update']) && $_POST['update']) {
                 $id_kh = $_GET['id'];
-                if(strlen($_POST['username'])>6){
+                if (strlen($_POST['username']) > 6) {
                     $username = $_POST['username'];
-                }else{
+                } else {
                     $username = "";
+                    $thongbaoname = "Bạn nhập sai định dạng username";
                 }
-                
-                if(strlen($_POST['password'])>6){
+
+                if (strlen($_POST['password']) > 6) {
                     $password = $_POST['password'];
-                }else{
+                } else {
                     $password = "";
+                    $thongbaopassword = "Bạn nhập sai định dạng mật khẩu";
                 }
-                if(str_contains($_POST['email'],"@")||strlen($_POST['email'])>10){
+                if (str_contains($_POST['email'], "@") || strlen($_POST['email']) > 10) {
                     $email = $_POST['email'];
-                }else{
-                    $email="";
+                } else {
+                    $email = "";
+                    $thongbaoemail = "Bạn nhập sai định dạng email";
                 }
                 $vaitro = $_POST['vaitro'];
                 $kichhoat = $_POST['kichhoat'];
                 include "../view/taikhoan/upload.php";
-                if($username!=""&&$password!=""&&$email!=""){
+                if ($username != "" && $password != "" && $email != "" && $checked == true) {
                     update_taikhoan($id_kh, $username, $password, $email, $file_name, $kichhoat, $vaitro);
                     $thongbao = "Cập nhập thành công";
                     $taikhoan_edit = loadone_taikhoan($email, $password);
                     include "taikhoan/list.php";
-                }else{
+                } else {
                     $thongbao = "Cập nhập thất bại";
                     include "taikhoan/list.php";
                 }
             }
-            
+
             break;
         case "listkh":
             if (isset($_POST['filter']) && $_POST['filter']) {
@@ -195,33 +231,36 @@ if (isset($_GET['act'])) {
             include "taikhoan/list.php";
             break;
         case "addtk":
-            if(isset($_POST['addtk'])&&$_POST['addtk']){
-                if(strlen($_POST['username'])>6){
+            if (isset($_POST['addtk']) && $_POST['addtk']) {
+                if (strlen($_POST['username']) > 6) {
                     $username = $_POST['username'];
-                }else{
+                } else {
                     $username = "";
+                    $thongbaoname = "Bạn nhập sai định dạng username";
                 }
-                
-                if(strlen($_POST['password'])>6){
+
+                if (strlen($_POST['password']) > 6) {
                     $password = $_POST['password'];
-                }else{
+                } else {
                     $password = "";
+                    $thongbaopassword = "Bạn nhập sai định dạng mật khẩu";
                 }
-                if(str_contains($_POST['email'],"@")||strlen($_POST['email'])>10){
+                if (str_contains($_POST['email'], "@") || strlen($_POST['email']) > 10) {
                     $email = $_POST['email'];
-                }else{
-                    $email="";
+                } else {
+                    $email = "";
+                    $thongbaoemail = "Bạn nhập sai định dạng email";
                 }
                 $vaitro = $_POST['vaitro'];
                 $kichhoat = $_POST['kichhoat'];
                 include "sanpham/upload.php";
-                if($username!=""&&$password!=""&&$email!=""){
-                    insert_taikhoan($username, $password, $email, $file_name, $vaitro,$kichhoat);
-                $thongbao = "Thêm tài khoản thành công";
-                }else{
+                if ($username != "" && $password != "" && $email != "" && $checked == true) {
+                    insert_taikhoan($username, $password, $email, $file_name, $vaitro, $kichhoat);
+                    $thongbao = "Thêm tài khoản thành công";
+                } else {
                     $thongbao = "Cập nhập thất bại";
                 }
-            }    
+            }
             include "taikhoan/add.php";
             break;
         case "dsbl":
@@ -236,20 +275,20 @@ if (isset($_GET['act'])) {
             $binhluan = thongke_binhluan();
             include "binhluan/list.php";
             break;
-         case "detail-bl":
-                if (isset($_GET['id'])) {
-                    $id = $_GET['id'];
-                    $_SESSION['id_list_bl'] = $id;
-                    $binhluan = loadall_binhluan($id);
-                    include "binhluan/detail.php";
-                }
-    
-                break;
-        case "xoabl":
-            
+        case "detail-bl":
             if (isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $idbl=$_SESSION['id_list_bl'];
+                $_SESSION['id_list_bl'] = $id;
+                $binhluan = loadall_binhluan($id);
+                include "binhluan/detail.php";
+            }
+
+            break;
+        case "xoabl":
+
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $idbl = $_SESSION['id_list_bl'];
                 delete_binhluan($id);
             }
             header("location:index.php?act=detail-bl&id=$idbl");

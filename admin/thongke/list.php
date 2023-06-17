@@ -33,16 +33,11 @@
                 }
                 
                 ?>
-                
-
             </table>
         </div>
         <div class="row mb10">
             <a href="index.php?act=chart"><input type="button" value="Biểu đồ"></a>
         </div>
     </div>
-    
-   
-
 </div>
 </div>

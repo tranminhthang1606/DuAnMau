@@ -32,10 +32,12 @@ $random_slide_sp = random_sanpham();
                 ?>
                 
                     <div class="box-sp mr mb">
-                        <img src="upload/<?php echo $sp['hinh'] ?>" alt="" class="pt">
-                        <h2>
+                    <a href="index.php?act=chitietsp&id=<?php echo $sp['ma_hh'] ?>">
+                    <img src="upload/<?php echo $sp['hinh'] ?>" alt="" class="pt">
+                    </a>
+                        <h3>
                             <?php echo $sp['ten_hh'] ?>
-            </h2>
+            </h3>
                         <p>
                             $
                             <?php echo $sp['don_gia'] ?>

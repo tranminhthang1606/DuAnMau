@@ -1,7 +1,7 @@
 
 <div class="row">
     <div class="row formtitle">
-        <h1>DANH SÁCH Sản phẩm</h1>
+        <h1>DANH SÁCH SẢN PHẨM</h1>
     </div>
     <div class="row formcontent">
         <div class="row mb10">
@@ -53,7 +53,7 @@
                         </td>
                         <td><a href="index.php?act=suasp&id=<?php echo $item['ma_hh'] ?>"><input type="button" name=""
                             value="SỬA"></a><a href="index.php?act=xoasp&id=<?php echo $item['ma_hh'] ?>"><input
-                            type="button" name="" value="XÓA"></a></td>
+                            type="button" name="" value="XÓA" onclick="return confirm('Bạn có chắc chắn muốn xóa')"></a></td>
                     </tr>
                     <?php
                 }
@@ -64,7 +64,7 @@
         <div class="row mb10">
             <input type="button" value="CHỌN TẤT CẢ" id="selectAll">
             <input type="button" value="BỎ CHỌN TẤT CẢ" id="unselectAll">
-            <input type="submit" value="XÓA CÁC MỤC ĐÃ CHỌN" name="delAll" id="delAll">
+            <input type="submit" value="XÓA CÁC MỤC ĐÃ CHỌN" name="delAll" id="delAll" onclick="return confirm('Bạn có chắc chắn muốn xóa')">
             <a href="index.php?act=addsp"><input type="button" value="NHẬP THÊM"></a>
         </div>
         </form>

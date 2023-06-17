@@ -6,12 +6,33 @@
                 <form action="index.php?act=update_tk&id=<?php echo $taikhoan_edit['ma_kh']?>" enctype="multipart/form-data" method="post">
                     <label for="">Email:</label>
                     <input type="email" name="email" id="" value="<?php echo $taikhoan_edit['email'] ?>">
+                    <?php
+               if(isset($thongbaoemail)){
+                ?>
+                <h2><?php echo $thongbaoemail ?></h2>
+                <?php
+               }        
+               ?>
                     <br>
                     <label for="">Username :</label>
                     <input type="text" name="username" value="<?php echo $taikhoan_edit['ho_ten'] ?>">
+                    <?php
+               if(isset($thongbaoname)){
+                ?>
+                <h2><?php echo $thongbaoname ?></h2>
+                <?php
+               }        
+               ?>
                     <br>
                     <label for="">Password :</label>
                     <input type="password" name="password" id="" value="<?php echo $taikhoan_edit['mat_khau'] ?>">
+                    <?php
+               if(isset($thongbao)){
+                ?>
+                <h2><?php echo $thongbaopassword ?></h2>
+                <?php
+               }        
+               ?>
                     <br>
                     <label for="">Ảnh đại diện :</label>
                     <img src="/upload/<?php echo $taikhoan_edit['hinh'] ?>" alt="<?php echo $taikhoan_edit['hinh'] ?>">
@@ -26,8 +47,7 @@
                     }else{
                         echo "Admin (Đã chọn)";
                     }
-                    ?>
-                    
+                    ?>   
                     </option>
                         <option value="0">Khách hàng</option>
                         <option value="1">Admin</option>

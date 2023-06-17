@@ -11,14 +11,38 @@
             <div class="row mb10">
                 <label for="">Tên sản phẩm</label><br>
                 <input type="text" name="tensp"><br>
+                <?php if (isset($thongbaoTensp)) {
+                ?>
+                <h2>
+                    <?php echo $thongbaoTensp ?>
+                </h2>
+                <?php
+            }
+            ?>
             </div>
             <div class="row mb10">
                 <label for="">Đơn giá</label><br>
                 <input type="text" name="dongia"><br>
+                <?php if (isset($thongbaoDongia)) {
+                ?>
+                <h2>
+                    <?php echo $thongbaoDongia ?>
+                </h2>
+                <?php
+            }
+            ?>
             </div>
             <div class="row mb10">
                 <label for="">Giảm giá</label><br>
                 <input type="text" name="giamgia"><br>
+                <?php if (isset($thongbaogiamgia)) {
+                ?>
+                <h2>
+                    <?php echo $thongbaogiamgia ?>
+                </h2>
+                <?php
+            }
+            ?>
             </div>
             <div class="row mb10">
                 <label for="">Hình</label><br>

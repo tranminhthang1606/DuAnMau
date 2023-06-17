@@ -3,27 +3,42 @@
         <div class="row mb">
             <div class="title">Chi tiết sản phẩm</div>
             <div class="row content">
-                <img src="upload/<?php echo $spct['hinh'] ?>" alt="">
-                <h2>
-                    Mã Sản Phẩm :
-                    <?php echo $spct['ma_hh'] ?>
-                </h2>
+                <div class="content_img">
+                    <img src="upload/<?php echo $spct['hinh'] ?>" alt="">
+                </div>
 
-                <h2>
+                <li>
+                    Mã Sản Phẩm :
+                    <span>
+                        <?php echo $spct['ma_hh'] ?>
+                    </span>
+                </li>
+
+                <li>
                     Tên sản phẩm :
-                    <?php echo $spct['ten_hh'] ?>
-                </h2>
-                <p>Đơn giá :
-                    $
-                    <?php echo $spct['don_gia'] ?>
-                </p>
-                <p>Giảm giá :
-                    <?php echo $spct['giam_gia'] ?>
-                </p>
+                    <span>
+                        <?php echo $spct['ten_hh'] ?>
+                    </span>
+                </li>
+                <li>Đơn giá :
+
+                    <span>$
+                        <?php echo $spct['don_gia'] ?>
+                    </span>
+                </li>
+                <li>Giảm giá :
+                    <span>
+                        <?php echo $spct['giam_gia'] ?>
+                    </span>
+                </li>
                 <p>Mô tả : </p>
                 <p>
                     <?php echo $spct['mo_ta'] ?>
                 </p>
+                <small>
+                    Lượt xem :
+                    <?php echo $spct['so_luot_xem'] ?>
+                </small>
 
             </div>
         </div>
@@ -38,12 +53,15 @@
                     </tr>
                     <?php
                     $binhluan = loadall_binhluan($spct['ma_hh']);
+
                     if (isset($binhluan) && $binhluan != "") {
                         foreach ($binhluan as $item) {
                             $khachhang = loadone_taikhoan_byID($item['ma_kh']);
                             ?>
                             <tr>
-                                <td><?php echo $khachhang['ho_ten']?></td>
+                                <td>
+                                    <?php echo $khachhang['ho_ten'] ?>
+                                </td>
                                 <td style="text-align:center">
                                     <?php echo $item['noi_dung'] ?>
                                 </td>
@@ -71,7 +89,14 @@
                     <input type="hidden" name="idkh" value="<?php echo $_SESSION['userID'] ?>">
                     <input type="text" name="binhluan">
                     <input type="submit" value="Gửi bình luận">
+                    <br>
                 </form>
+                <h2>
+                    <?php if ($thongbaobinhluantieucuc) {
+                        echo $thongbaobinhluantieucuc;
+                    }
+                    ?>
+                </h2>
 
                 <?php
             }
@@ -84,16 +109,25 @@
                 <?php
                 $sp_cungloai = loadall_sanpham_cungloai($spct['ma_loai']);
 
+
                 foreach ($sp_cungloai as $item) {
-                    ?>
-                    <li><a href="index.php?act=chitietsp&id=<?php echo $item['ma_hh'] ?>">
-                            <?php echo $item['ten_hh'] ?>
-                        </a></li>
-                    <?php
+                    if ($item['ma_hh'] != $spct['ma_hh']) {
+                        ?>
+                        <li class="spcl-item"><a href="index.php?act=chitietsp&id=<?php echo $item['ma_hh'] ?>">
+                                <img src="upload/<?php echo $item['hinh'] ?>" alt="">
+                                <div>
+                                    <span style="font-size: 16px;">
+                                        <?php echo $item['ten_hh'] ?>
+                                    </span>
+                                    <p style="font-size: 12px;">Lượt xem :
+                                        <?php echo $item['so_luot_xem'] ?>
+                                    </p>
+                                </div>
+                            </a></li>
+                        <?php
+                    }
                 }
-
                 ?>
-
             </div>
         </div>
     </div>

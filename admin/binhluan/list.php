@@ -37,12 +37,7 @@
 
             </table>
         </div>
-        <div class="row mb10">
-            <input type="button" value="CHỌN TẤT CẢ" id="selectAll">
-            <input type="button" value="BỎ CHỌN TẤT CẢ" id="unselectAll">
-            <input type="submit" value="XÓA CÁC MỤC ĐÃ CHỌN" onclick="return confirm('Bạn có chắc chắn muốn xóa')"
-                name="delAll" id="delAll">
-        </div>
+        
     </div>
 </div>
 </div>

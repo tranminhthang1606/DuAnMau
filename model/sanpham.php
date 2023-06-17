@@ -15,7 +15,11 @@ function delete_sanpham($id)
     $sql = "DELETE FROM `hang_hoa` WHERE `hang_hoa`.`ma_hh` = '$id'";
     pdo_execute($sql);
 }
-
+function delete_sanpham_byDanhMuc($id)
+{
+    $sql = "DELETE FROM `hang_hoa` WHERE `hang_hoa`.`ma_loai` = '$id'";
+    pdo_execute($sql);
+}
 function update_sanpham($id, $tenhh, $dongia, $giamgia, $hinh, $ngaynhap, $loai, $dacbiet, $slx, $mota)
 {
     $sql = "UPDATE `hang_hoa` SET `ten_hh` = '$tenhh', `don_gia` = '$dongia', `giam_gia` = '$giamgia', `hinh` = '$hinh', `ngay_nhap` = '$ngaynhap', `ma_loai` = '$loai', `dac_biet` = b'$dacbiet', `so_luot_xem` = '$slx', `mo_ta` = '$mota' WHERE `hang_hoa`.`ma_hh` = '$id'";
