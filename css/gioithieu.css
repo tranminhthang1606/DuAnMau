@@ -1,0 +1,37 @@
+.secbox_text{
+    text-align: center;
+}
+.secbox_textimg{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.secbox_text p{
+    font-family: "roboto";
+    font-size: 26px;
+}
+.img_new{
+    text-align: center;
+    margin-top: 70px;
+    font-family: "roboto";
+}
+.img_new i{
+    font-size: 150px;
+    color:rgb(208, 217, 218);
+}
+.img_new h2{
+    font-size: 30px;
+    margin-top: 20px;
+}
+.img_new p{
+    font-size: 20px;
+    margin-top: 20px;
+}
+.box_anh1 {
+    padding-top: 170px;
+}
+.box_anh1 img{
+    width: 500px;
+}

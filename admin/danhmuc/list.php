@@ -14,11 +14,12 @@
                     <th>TÊN LOẠI</th>
                     <th></th>
                 </tr>
+                <form action="index.php?act=delAllDm" method="post">
                 <?php
                 foreach ($danhmuc as $item) {
                     ?>
                     <tr>
-                        <td><input type="checkbox" name=""></td>
+                        <td><input type="checkbox" name="delItem[]" value="<?php echo $item['ma_loai'] ?>"></td>
                         <td>
                             <?php echo $item['ma_loai'] ?>
                         </td>
@@ -27,21 +28,23 @@
                         </td>
                         <td><a href="index.php?act=suadm&id=<?php echo $item['ma_loai'] ?>"><input type="button" name=""
                                     value="SỬA"></a><a href="index.php?act=xoadm&id=<?php echo $item['ma_loai'] ?>"><input
-                                    type="button" name="" value="XÓA"></a></td>
+                                    type="button" name="" value="XÓA" onclick="return confirm('Bạn có chắc chắn muốn xóa')"></a></td>
                     </tr>
                     <?php
                     # code...
                 }
                 ?>
+                
 
             </table>
         </div>
         <div class="row mb10">
-            <input type="submit" value="CHỌN TẤT CẢ">
-            <input type="reset" value="BỎ CHỌN TẤT CẢ">
-            <input type="reset" value="XÓA CÁC MỤC ĐÃ CHỌN">
+            <input type="button" value="CHỌN TẤT CẢ" id="selectAll">
+            <input type="button" value="BỎ CHỌN TẤT CẢ" id="unselectAll">
+            <input type="submit" value="XÓA CÁC MỤC ĐÃ CHỌN" name="delAll" id="delAll" onclick="return confirm('Bạn có chắc chắn muốn xóa')">
             <a href="index.php?act=adddm"><input type="button" value="NHẬP THÊM"></a>
         </div>
+        </form>
     </div>
 
 </div>

@@ -1,7 +1,7 @@
 <div class="row mb">
     <div class="boxleft mr">
         <div class="row mb">
-            <div class="title">Đăng ký thành viên</div>
+            <div class="title">Sửa thành viên</div>
             <div class="row content">
                 <form action="index.php?act=update_tk&id=<?php echo $taikhoan_edit['ma_kh']?>" enctype="multipart/form-data" method="post">
                     <label for="">Email:</label>
@@ -27,7 +27,7 @@
                     <label for="">Password :</label>
                     <input type="password" name="password" id="" value="<?php echo $taikhoan_edit['mat_khau'] ?>">
                     <?php
-               if(isset($thongbaopassword)){
+               if(isset($thongbao)){
                 ?>
                 <h2><?php echo $thongbaopassword ?></h2>
                 <?php
@@ -47,16 +47,16 @@
                     }else{
                         echo "Admin (Đã chọn)";
                     }
-                    ?>
-                    
+                    ?>   
                     </option>
                         <option value="0">Khách hàng</option>
                         <option value="1">Admin</option>
                     </select>
                     <br>
                     <label for="">Kích hoạt</label>
-                    <input type="text" name="kichhoat" disabled value="<?php echo $taikhoan_edit['kich_hoat'] ?>">
+                    <input type="text" name="kichhoat" value="<?php echo $taikhoan_edit['kich_hoat'] ?>">
                     <input type="submit" value="Cập nhập tài khoản" name="update">
+                    <input type="reset" value="Nhập lại">
                 </form>
                <?php
                if(isset($thongbao)){
@@ -67,8 +67,5 @@
                ?>
             </div>
         </div>
-    </div>
-    <div class="boxright">
-        <?php include "view/boxright.php" ?>
     </div>
 </div>

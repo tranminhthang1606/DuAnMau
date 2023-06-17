@@ -1,0 +1,40 @@
+
+.fomr_input{
+    text-align: center;
+    font-family: "roboto";
+    font-family: 700;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.input1{
+    display: flex;
+    gap: 30px;
+}
+.input1 input{
+    min-width: 357px;
+    border: 2px solid rgb(203, 42, 42);
+    height: 60px;
+    margin-top: 40px;
+    padding-left: 20px;
+}
+.input4{
+    min-width: 770px;
+    height: 150px;
+    margin-top: 30px;
+    padding-left: 20px;
+}
+.fomr_input button{
+    min-width: 300px;
+    background-color: #86ba09;
+    height: 50px;
+    margin-top: 20px;
+    border: none;
+    color: white;
+    font-family: "roboto";
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+}

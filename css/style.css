@@ -16,7 +16,9 @@
 .mySlides {
   display: none;
 }
-
+.mySlides img{
+  width:40%
+}
 /* Next & previous buttons */
 .prev,
 .next {
@@ -86,6 +88,32 @@
   float: left;
   width: 100%;
 }
+.row li{
+  list-style: none;
+  
+}
+.spcl-item{
+  
+  border-bottom:2px solid greenyellow ;
+}
+.spcl-item a{
+  display: flex;
+  align-items: center;
+  margin: 30px 0;
+  text-decoration:none;
+}
+.spcl-item a img{
+  width: 80px;
+  margin: 0 10px;
+}
+.spcl-item span{
+  font-size: 15px;
+}
+.spcl-item p{
+  font-size: 10px;
+  text-decoration: none;
+  
+}
 .pt {
   padding-top: 30px;
 }
@@ -145,13 +173,31 @@
 .title {
   padding: 10px;
   color: #333;
-  background: #ccc;
+  background: rgb(113, 170, 113);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
+  font-size: 20px;
 }
+.title-trangchu-admin button{
+font-size: 20px;
+padding: 10px 20px;
+background: rgb(113, 170, 113);
+border-radius: 10px;
+cursor: pointer;
+border: none;
+}
+.title-trangchu-admin h1{
+  font-size: 25px;
+text-decoration: underline;
+}
+.title-trangchu-admin button:hover{
+  color: white;
+  transition: 0.3s;
+}
+
 .content {
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
@@ -161,12 +207,29 @@
   min-height: 200px;
   padding: 20px;
 }
+.content_img{
+  text-align: center;
+  margin: 20px 0;
+}
+.content li {
+  margin-left: 50px;
+  font-size: 20px;
+  line-height: 40px;
+}
+.content p{
+  font-size: 20px;
+}
+.content li span{
+  font-size: 25px;
+  font-weight: 700;
+  color: green;
+}
+
 .formtk {
   line-height: 150%;
 }
-.formtk input[type="text"],
-.formtk input[type="password"],
-.formcontent input[type="text"] {
+
+input[type="text"],input[type="password"],input[type="email"]{
   width: 100%;
   border: 1px solid #ccc;
   padding: 10px;
@@ -180,19 +243,26 @@
 .formcontent input[type="submit"],
 .formcontent input[type="reset"],
 .formcontent input[type="button"] {
-  width: 200px;
+  min-width: 200px;
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
 }
-.formtk input[type="submit"]:hover,
-.formcontent input[type="submit"]:hover,
-.formcontent input[type="reset"]:hover,
-.formcontent input[type="button"]:hover {
+h2{color: red;}
+input[type="submit"],input[type="reset"],input[type="button"]{
+  min-width: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 10px 10px 0;
+  cursor: pointer;
+}
+input[type="submit"]:hover,input[type="reset"]:hover,input[type="button"]:hover{
   background-color: #060;
   transition: 0.5s;
   color: #ffffff;
 }
+
 .formtk li a {
   color: teal;
   text-decoration: none;
@@ -229,6 +299,16 @@
   padding: 15px 0;
   box-shadow: 10px 10px 10px 10px #eee;
 }
+.box-sp h3{
+  color: green;
+}
+.box-sp p {
+  color: #666;
+}
+.box-sp:hover img{
+  transform: scale(1.1);
+  transition: 0.5s ease-out;
+}
 .content2 {
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
@@ -245,7 +325,7 @@
   background-color: #fff;
   border-bottom: 1px solid #ccc;
 }
-.menudoc ul li a {
+.menudoc ul a {
   color: #666;
   text-decoration: none;
 }
@@ -261,8 +341,14 @@
   text-align: center;
   color: teal;
 }
+.text{
+  background: rgba(0, 0, 0, 0.7);
+}
+.numbertext{
+  background: rgba(0, 0, 0, 0.7)
+}
 .top10 img {
-  width: 10%;
+  width: 20%;
   height: 50px;
   float: left;
   margin-right: 10px;
@@ -305,11 +391,11 @@ admin
   border: 1px solid #999;
 }
 .formds table th:nth-child(1) {
-  width: 10%;
+  width: 5%;
   background-color: teal;
 }
 .formds table th:nth-child(2) {
-  width: 30%;
+  width: 10%;
   background-color: tomato;
 }
 .formds table th:nth-child(3) {
@@ -320,9 +406,23 @@ admin
   width: 20%;
   background-color: teal;
 }
+.formds table th:nth-child(5) {
+  width: 20%;
+  background-color: tomato;
+}
+.formds table th:nth-child(6) {
+  width: 20%;
+  background-color: teal;
+}
+.formds table th:nth-child(7) {
+  width: 20%;
+  background-color: tomato;
+}
 .formds table td {
   padding: 10px 20px;
   border: 1px solid #999;
+  min-width: 150px;
+  text-align: center;
 }
 .box-sp img{
   max-width: 200px;
@@ -330,4 +430,13 @@ admin
 
 .content img{
   max-width: 200px;
+}
+
+#myChart{
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  width:100%; 
+  max-width:1000px; 
+  height:500px;
 }
