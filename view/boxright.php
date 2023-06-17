@@ -17,7 +17,7 @@
                     echo "Admin";
                     ?>
                     <br>
-                    <a href="../admin/index.php">Quản lý bán hàng</a>
+                    <a href="admin/index.php">Quản lý bán hàng</a>
                     <?php
                 } ?>
                 <br>
