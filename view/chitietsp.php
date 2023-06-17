@@ -92,7 +92,7 @@
                     <br>
                 </form>
                 <h2>
-                    <?php if ($thongbaobinhluantieucuc) {
+                    <?php if (isset($thongbaobinhluantieucuc)) {
                         echo $thongbaobinhluantieucuc;
                     }
                     ?>
