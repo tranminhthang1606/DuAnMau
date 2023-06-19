@@ -47,8 +47,8 @@ function filter_sanpham($id, $keyword)
     return $sanpham;
 }
 
-function loadall_sanpham_home(){
-    $sql = "SELECT * FROM `hang_hoa` order by `ma_hh` desc limit 0,9";
+function loadall_sanpham_home($min,$max){
+    $sql = "SELECT * FROM `hang_hoa` order by `ma_hh` desc limit $min,$max";
     $sanpham = pdo_query($sql);
     return $sanpham;
 }

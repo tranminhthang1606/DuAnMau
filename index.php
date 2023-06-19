@@ -5,9 +5,10 @@ include "model/danhmuc.php";
 include "model/taikhoan.php";
 include "model/binhluan.php";
 include "view/header.php";
+include "view/pagination.php";
 
 
-$sp_trangchu = loadall_sanpham_home();
+$sp_trangchu = loadall_sanpham_home($page_first_result,$result_per_page);
 $danhmuc_trangchu = loadall_danhmuc();
 session_start();
 if (isset($_GET['act'])) {

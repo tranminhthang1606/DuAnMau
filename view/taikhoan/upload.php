@@ -7,7 +7,7 @@ if (isset($_FILES['hinh'])) {
     $size = $_FILES['hinh']['size'];
     if (!in_array(strtolower($path), $accept_path) || $size > 5000000) {
         $checked = false;
-        echo "Ảnh ko hợp lệ";
+        echo "<h2>Upload ảnh không thành công !</h2>";
         return;
     } else {
         move_uploaded_file($_FILES['hinh']["tmp_name"], $dir . $file_name);

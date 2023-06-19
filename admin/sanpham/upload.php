@@ -6,7 +6,7 @@ if (isset($_FILES['hinh'])) {
     $accept_path = ['png', 'jpg'];
     $size = $_FILES['hinh']['size'];
     if (!in_array(strtolower($path), $accept_path) || $size > 5000000) {
-        echo "Ảnh ko hợp lệ";
+        echo "<h2>Ảnh ko hợp lệ</h2>";
         $checked = false;
         return;
     } else {

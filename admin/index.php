@@ -30,9 +30,9 @@ if (isset($_GET['act'])) {
                     $tensp="";
                     $thongbaoTensp = "Bạn nhập sai định dạng tên";
                 }
-                
-                if($_POST['dongia']!="" &&is_nan($_POST['dongia'])==false){
-                    $dongia = $_POST['dongia'];
+                $floatDongia = (double) $_POST['dongia'];
+                if($_POST['dongia']!="" &&is_nan($floatDongia)==false){
+                    $dongia = $floatDongia;
                 }else{
                     $dongia="";
                     $thongbaoDongia = "Bạn phải nhập số vào giá sản phẩm";
@@ -109,6 +109,7 @@ if (isset($_GET['act'])) {
             break;
         case "updatesp";
             if (isset($_POST['capnhapsp']) && $_POST['capnhapsp']) {
+                $id=$_POST['masp'];
                 if($_POST['tensp']!=""){
                     $tensp = $_POST['tensp'];
                 }else{
@@ -176,7 +177,6 @@ if (isset($_GET['act'])) {
                 $id = $_GET['id'];
                 delete_binhluan_byKH($id);
                 delete_taikhoan($id);
-                session_start();
                 session_destroy();
             }
             $taikhoan = loadall_taikhoan();
@@ -211,10 +211,12 @@ if (isset($_GET['act'])) {
                     update_taikhoan($id_kh, $username, $password, $email, $file_name, $kichhoat, $vaitro);
                     $thongbao = "Cập nhập thành công";
                     $taikhoan_edit = loadone_taikhoan($email, $password);
+                    $taikhoan = loadall_taikhoan();
                     include "taikhoan/list.php";
                 } else {
                     $thongbao = "Cập nhập thất bại";
-                    include "taikhoan/list.php";
+                    $taikhoan_edit = loadone_taikhoan_byID($id_kh);
+                    include "taikhoan/edit_tk.php";
                 }
             }
 
