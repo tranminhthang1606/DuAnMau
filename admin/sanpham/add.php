@@ -84,7 +84,11 @@
                 <a href="index.php?act=listsp"><input type="button" value="DANH SÁCH"></a>
             </div>
             <?php if (isset($thongbao)) {
-                echo $thongbao;
+                ?>
+                <h2>
+               <?php echo $thongbao?>
+                </h2>
+                <?php
             }
             ?>
         </form>

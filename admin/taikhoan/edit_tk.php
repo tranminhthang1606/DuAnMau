@@ -27,7 +27,7 @@
                     <label for="">Password :</label>
                     <input type="password" name="password" id="" value="<?php echo $taikhoan_edit['mat_khau'] ?>">
                     <?php
-               if(isset($thongbao)){
+               if(isset($thongbaopassword)){
                 ?>
                 <h2><?php echo $thongbaopassword ?></h2>
                 <?php

@@ -23,8 +23,12 @@
                 <input type="reset" value="NHẬP LẠI">
                 <a href="index.php?act=listdm"><input type="button" value="DANH SÁCH"></a>
             </div>
-            <?php if(isset($thongbao)){
-                echo $thongbao;
+            <?php if (isset($thongbao)) {
+                ?>
+                <h2>
+               <?php echo $thongbao?>
+                </h2>
+                <?php
             }
             ?>
         </form>

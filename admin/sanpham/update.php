@@ -52,7 +52,7 @@
             <div class="row mb10">
                 <label for="">Hình</label><br>
                 <input type="file" name="hinh" value="<?php echo $sp['hinh'] ?>"><br>
-                <img src="../upload/<?php echo $sp['hinh'] ?>" alt="">
+                <img style="width: 150px;" src="../upload/<?php echo $sp['hinh'] ?>" alt="">
             </div>
             <div class="row mb10">
                 <label for="">Ngày nhập</label><br>
@@ -100,7 +100,11 @@
                 <a href="index.php?act=listsp"><input type="button" value="DANH SÁCH"></a>
             </div>
             <?php if (isset($thongbao)) {
-                echo $thongbao;
+                ?>
+                <h2>
+               <?php echo $thongbao?>
+                </h2>
+                <?php
             }
             ?>
         </form>
