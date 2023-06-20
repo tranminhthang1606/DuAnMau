@@ -1,4 +1,10 @@
 <?php
+
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\Exception;
+// require 'vendor/autoload.php';
+
 include "model/pdo.php";
 include "model/sanpham.php";
 include "model/danhmuc.php";
@@ -7,6 +13,7 @@ include "model/binhluan.php";
 include "view/header.php";
 include "view/pagination.php";
 
+ 
 
 $sp_trangchu = loadall_sanpham_home($page_first_result,$result_per_page);
 $danhmuc_trangchu = loadall_danhmuc();
@@ -156,32 +163,37 @@ if (isset($_GET['act'])) {
                 $password = "";
                 $taikhoan = loadone_taikhoan($email, $password);
                 if (isset($taikhoan)) {
-                    // $mail = new PHPMailer(true);
-                    // try {
-                    //     //Server settings
-                    //     $mail->SMTPDebug = 2;
-                    //     $mail->isSMTP(); // Sử dụng SMTP để gửi mail
-                    //     $mail->Host = 'smtp.gmail.com'; // Server SMTP của gmail
-                    //     $mail->SMTPAuth = true; // Bật xác thực SMTP
-                    //     $mail->Username = 'minhthangtran1606@gmail.com'; // Tài khoản email
-                    //     $mail->Password = ''; // Mật khẩu ứng dụng ở bước 1 hoặc mật khẩu email
-                    //     $mail->SMTPSecure = 'ssl'; // Mã hóa SSL
-                    //     $mail->Port = 465; // Cổng kết nối SMTP là 465
-
-                    //     //Recipients
-                    //     $mail->setFrom('minhthangtran1606@gmail.com', 'Wintee'); // Địa chỉ email và tên người gửi
-                    //     $mail->addAddress($email, 'Khách hàng'); // Địa chỉ mail và tên người nhận
-
-                    //     //Content
-                    //     $mail->isHTML(true); // Set email format to HTML
-                    //     $mail->Subject = 'Reset Password'; // Tiêu đề
-                    //     $mail->Body = 'Mật khẩu mới ở đây'; // Nội dung
-
-                    //     $mail->send();
-                    //     echo 'Message has been sent';
-                    // } catch (Exception $e) {
-                    //     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                    
+                    // $mail = new PHPMailer();
+ 
+                    // $mail->CharSet =  "utf-8";
+                    // $mail->IsSMTP();
+                    // // enable SMTP authentication
+                    // $mail->SMTPAuth = true;                  
+                    // // GMAIL username
+                    // $mail->Username = "thangtmph29942@fpt.edu.vn";
+                    // // GMAIL password
+                    // $mail->Password = "kamenrider123";
+                    // $mail->SMTPSecure = "tls";  
+                    // // sets GMAIL as the SMTP server
+                    // $mail->Host = "smtp.gmail.com";
+                    // // set the SMTP port for the GMAIL server
+                    // $mail->Port = "587";
+                    // $mail->From='thangtmph29942@fpt.edu.vn';
+                    // $mail->FromName='TMT';
+                    // $mail->AddAddress($email, $email);
+                    // $mail->Subject  =  'Reset Password';
+                    // $mail->IsHTML(true);
+                    // $mail->Body    = 'Your password is '.$taikhoan['mat_khau'];
+                    // if($mail->Send())
+                    // {
+                    //   echo "Check Your Email and Click on the link sent to your email";
                     // }
+                    // else
+                    // {
+                    //   echo "Mail Error - >".$mail->ErrorInfo;
+                    // }
+                    
                     $thongbao = "Mật khẩu của bạn là: " . $taikhoan['mat_khau'];
 
                 } else {

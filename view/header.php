@@ -22,14 +22,14 @@
 <body>
     <div class="boxcontainer">
         <div class="row mb header">
-            <h1>SIÊU THỊ TRỰC TUYẾN</h1>
+            <h1>WPhone Store</h1>
         </div>
         <div class="row mb menu">
             <ul>
                 <li><a href="index.php">Trang chủ</a></li>
                 <li><a href="index.php?act=gioithieu">Giới thiệu</a></li>
                 <li><a href="index.php?act=lienhe">Liên hệ</a></li>
-                <li><a href="">Giải đáp</a></li>
-                <li><a href="">Góp ý</a></li>
+                <li><a href="index.php?act=lienhe">Giải đáp</a></li>
+                <li><a href="index.php?act=lienhe">Góp ý</a></li>
             </ul>
         </div>

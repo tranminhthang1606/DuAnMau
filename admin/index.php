@@ -90,7 +90,7 @@ if (isset($_GET['act'])) {
                 delete_binhluan_bySP($id);
                 delete_sanpham($id);
             }
-            $danhmuc = loadall_sanpham();
+            $sanpham = loadall_sanpham();
             include "sanpham/list.php";
             break;
         case "suadm":
